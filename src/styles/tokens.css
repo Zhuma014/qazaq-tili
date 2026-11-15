@@ -1,0 +1,79 @@
+:root {
+  --sky-50: #eef7fd;
+  --sky-100: #d6edfb;
+  --sky-200: #aed9f6;
+  --sky-400: #4fb0e8;
+  --sky-500: #1f8fd6;
+  --sky-600: #1673b3;
+  --sky-800: #0e4a75;
+  --sun-100: #fff1c7;
+  --sun-400: #f5b82e;
+  --sun-600: #c98a06;
+
+  --cream: #fbf7f0;
+  --sand-100: #f3ebdd;
+  --sand-200: #e6d9c3;
+  --ink: #1f2a37;
+  --ink-soft: #4b5563;
+  --ink-muted: #6b7280;
+  --white: #ffffff;
+
+  --ok: #1f9d55;
+  --ok-bg: #e5f7ec;
+  --bad: #d64545;
+  --bad-bg: #fdecec;
+  --warn-bg: #fff6dc;
+
+  /* Topic accents: base + soft background */
+  --sky: #1f8fd6;
+  --sky-soft: #e3f2fc;
+  --coral: #ef6f53;
+  --coral-soft: #fde9e4;
+  --sun: #e0a100;
+  --sun-soft: #fff4d1;
+  --mint: #1fa585;
+  --mint-soft: #ddf5ee;
+  --violet: #8059d9;
+  --violet-soft: #eee8fb;
+  --rose: #e0518b;
+  --rose-soft: #fce6ef;
+  --teal: #138ca0;
+  --teal-soft: #dcf2f5;
+  --amber: #d9770b;
+  --amber-soft: #fdebd5;
+  --indigo: #4b5fd1;
+  --indigo-soft: #e5e8fb;
+
+  --font-body: 'Nunito Variable', 'Nunito', system-ui, sans-serif;
+  --font-display: 'Unbounded', 'Nunito Variable', system-ui, sans-serif;
+
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 28px;
+  --shadow-sm: 0 2px 6px rgb(31 42 55 / 0.06);
+  --shadow: 0 8px 24px rgb(31 42 55 / 0.08);
+  --shadow-lift: 0 14px 34px rgb(31 143 214 / 0.18);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+
+  --container: 1120px;
+  --header-h: 68px;
+}
+
+/* Accent switcher: any element with .accent-<name> exposes --accent / --accent-soft */
+.accent-sky { --accent: var(--sky); --accent-soft: var(--sky-soft); }
+.accent-coral { --accent: var(--coral); --accent-soft: var(--coral-soft); }
+.accent-sun { --accent: var(--sun); --accent-soft: var(--sun-soft); }
+.accent-mint { --accent: var(--mint); --accent-soft: var(--mint-soft); }
+.accent-violet { --accent: var(--violet); --accent-soft: var(--violet-soft); }
+.accent-rose { --accent: var(--rose); --accent-soft: var(--rose-soft); }
+.accent-teal { --accent: var(--teal); --accent-soft: var(--teal-soft); }
+.accent-amber { --accent: var(--amber); --accent-soft: var(--amber-soft); }
+.accent-indigo { --accent: var(--indigo); --accent-soft: var(--indigo-soft); }
