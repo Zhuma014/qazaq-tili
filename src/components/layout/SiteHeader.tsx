@@ -27,7 +27,8 @@ export const SiteHeader = () => {
         <nav id="main-nav" className={`main-nav ${isOpen ? 'is-open' : ''}`}>
           {NAV_ITEMS.map((item) => (
             <NavLink key={item.to} to={item.to} className="main-nav__link" onClick={close}>
-              <span aria-hidden="true">{item.emoji}</span> {item.label}
+              <span className="main-nav__emoji" aria-hidden="true">{item.emoji} </span>
+              {item.label}
             </NavLink>
           ))}
         </nav>

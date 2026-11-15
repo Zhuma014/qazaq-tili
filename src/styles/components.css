@@ -77,6 +77,7 @@
   border-bottom: 1px solid var(--sand-100);
 }
 .site-header__inner {
+  max-width: 1280px;
   display: flex;
   align-items: center;
   gap: var(--space-4);
@@ -98,7 +99,7 @@
 }
 .main-nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 2px;
   margin-left: auto;
 }
@@ -111,6 +112,7 @@
   font-size: 0.92rem;
   white-space: nowrap;
 }
+.main-nav__emoji { display: none; }
 .main-nav__link:hover { background: var(--sky-50); color: var(--sky-600); }
 .main-nav__link.active { background: var(--sky-500); color: var(--white); }
 .menu-toggle {
@@ -124,7 +126,8 @@
   font-size: 1.4rem;
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1180px) {
+  .main-nav__emoji { display: inline; }
   .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
   .main-nav {
     display: none;
