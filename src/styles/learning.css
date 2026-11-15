@@ -49,9 +49,12 @@
   align-items: center;
   margin-top: var(--space-2);
 }
+.step-nav > :first-child { justify-self: start; }
 .step-nav > :last-child { justify-self: end; }
 @media (max-width: 600px) {
   .step-nav { grid-template-columns: 1fr 1fr; }
+  .step-nav > :first-child,
+  .step-nav > :last-child { justify-self: stretch; }
   .step-nav__home { grid-column: 1 / -1; grid-row: 2; }
   .step-nav .btn { padding-inline: 14px; }
 }

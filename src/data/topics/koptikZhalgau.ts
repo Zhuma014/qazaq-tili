@@ -5,7 +5,7 @@ export const koptikZhalgau: Topic = {
   section: 'zhalgau',
   order: 1,
   title: 'Көптік жалғау',
-  emoji: '👨‍👩‍👧',
+  emoji: '👥',
   color: 'sky',
   tagline: 'Заттың көп екенін білдіретін жалғау',
   definition:
