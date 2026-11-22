@@ -15,8 +15,8 @@ export const useLessonSession = () => {
   return { session, restart }
 }
 
-export const studentLink = (path: string, session: string) =>
-  `${window.location.origin}${window.location.pathname}#${path}?s=${session}`
+export const studentLink = (path: string, session: string, extra: Record<string, string> = {}) =>
+  `${window.location.origin}${window.location.pathname}#${path}?${new URLSearchParams({ s: session, ...extra }).toString()}`
 
 const SESSION_PATTERN = /^[a-z0-9]{6,32}$/i
 

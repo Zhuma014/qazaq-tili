@@ -1,47 +1,73 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { QrPanel } from '@/components/abai/QrPanel'
 import { ReflectionResults } from '@/components/abai/ReflectionResults'
-import { REFLECTION_METHODS } from '@/data/abai/reflection'
+import { DEFAULT_METHOD_ID, findMethod, REFLECTION_METHODS, type ReflectionMethod } from '@/data/abai/reflection'
 import { useLessonSession } from '@/hooks/useLessonSession'
 import { kkAbai } from '@/i18n/kkAbai'
-import { isReflectionAnswer } from '@/lib/abaiAnswers'
+import { REFLECTION_GUARDS } from '@/lib/abaiAnswers'
 import { topicFor, useLiveMessages } from '@/lib/liveBoard'
 
 const REFLECTION_ANSWER_PATH = '/abai/refleksiya/zhauap'
+const METHOD_PARAM = 'm'
 
-const METHODS = Object.values(REFLECTION_METHODS)
+const MethodPicker = ({ activeId, onPick }: { activeId: string; onPick: (id: string) => void }) => (
+  <ol className="methods">
+    {REFLECTION_METHODS.map((m) => (
+      <li key={m.id}>
+        <button
+          type="button"
+          className={m.id === activeId ? 'methods__item methods__item--active' : 'methods__item'}
+          aria-pressed={m.id === activeId}
+          onClick={() => onPick(m.id)}
+        >
+          <span className="methods__num">{m.number}</span>
+          <span>
+            <b>{m.title}</b>
+            <span>{m.question}</span>
+          </span>
+        </button>
+      </li>
+    ))}
+  </ol>
+)
 
-export const ReflectionPage = () => {
+/** QR code and results of one method; remounted per method so «show results» starts hidden. */
+const MethodBoard = ({ method }: { method: ReflectionMethod }) => {
   const { session, restart } = useLessonSession()
-  const { messages, status } = useLiveMessages(topicFor(session, 'refleksiya'), isReflectionAnswer)
+  const { messages, status } = useLiveMessages(topicFor(session, `refleksiya-${method.id}`), REFLECTION_GUARDS[method.id])
   const [isShown, setIsShown] = useState(false)
 
   return (
-    <div className="reflection">
-      <div className="live-stage">
-        <section className="reflection__intro">
-          <h2 className="abai-section-title">{kkAbai.reflection.methodsTitle}</h2>
-          <ol className="methods">
-            {METHODS.map((m) => (
-              <li key={m.title} className={m.number === 1 ? 'methods__item methods__item--main' : 'methods__item'}>
-                <b>{m.title}</b>
-                <span>{m.question}</span>
-              </li>
-            ))}
-          </ol>
-          <button type="button" className="btn btn--primary btn--lg" onClick={() => setIsShown(!isShown)}>
-            {isShown ? kkAbai.reflection.hideResults : kkAbai.reflection.showResults}
-          </button>
-        </section>
-        <QrPanel path={REFLECTION_ANSWER_PATH} session={session} answerCount={messages.length} status={status} onRestart={restart} />
-      </div>
+    <div className="method-board">
+      <QrPanel
+        path={REFLECTION_ANSWER_PATH}
+        session={session}
+        params={{ [METHOD_PARAM]: method.id }}
+        answerCount={messages.length}
+        status={status}
+        onRestart={restart}
+      />
+      <button type="button" className="btn btn--primary btn--lg" onClick={() => setIsShown(!isShown)}>
+        {isShown ? kkAbai.reflection.hideResults : kkAbai.reflection.showResults}
+      </button>
+      {isShown && <ReflectionResults method={method} answers={messages} />}
+    </div>
+  )
+}
 
-      {isShown && (
-        <section className="reflection__results">
-          <h2 className="abai-section-title">📊 {kkAbai.reflection.resultsTitle}</h2>
-          <ReflectionResults answers={messages} />
-        </section>
-      )}
+export const ReflectionPage = () => {
+  const [params, setParams] = useSearchParams()
+  const method = findMethod(params.get(METHOD_PARAM)) ?? findMethod(DEFAULT_METHOD_ID)
+
+  return (
+    <div className="reflection">
+      <section>
+        <h2 className="abai-section-title">{kkAbai.reflection.methodsTitle}</h2>
+        <p className="muted">{kkAbai.reflection.pickHint}</p>
+        <MethodPicker activeId={method?.id ?? DEFAULT_METHOD_ID} onPick={(id) => setParams({ [METHOD_PARAM]: id }, { replace: true })} />
+      </section>
+      {method && <MethodBoard key={method.id} method={method} />}
     </div>
   )
 }

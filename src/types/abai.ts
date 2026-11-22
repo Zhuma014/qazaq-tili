@@ -1,17 +1,7 @@
-import type { VIRTUES } from '@/data/abai/lesson'
-
-export type Virtue = (typeof VIRTUES)[number]
-export type TrafficLight = 'green' | 'yellow' | 'red'
-export type CupLevel = 'full' | 'half' | 'low'
-export type Mood = 'great' | 'good' | 'ok' | 'hard'
-
-/** One student's feedback sent from the reflection page (QR). */
+/** One student's answer to a single reflection method (sent from its own QR code). */
 export interface ReflectionAnswer {
-  light: TrafficLight
-  cup?: CupLevel
-  mood?: Mood
-  virtue?: Virtue
-  sentence?: string
+  /** Chosen option id, or the student's sentence for the text method. */
+  value: string
   name?: string
 }
 

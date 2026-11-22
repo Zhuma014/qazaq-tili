@@ -1,72 +1,52 @@
-import { useForm } from 'react-hook-form'
+import { type UseFormRegisterReturn, useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
 import { OptionGroup } from '@/components/abai/OptionGroup'
 import { StudentShell } from '@/components/abai/StudentShell'
-import { VIRTUES } from '@/data/abai/lesson'
-import { CUP_LEVELS, MOODS, REFLECTION_METHODS, TRAFFIC_LIGHTS } from '@/data/abai/reflection'
+import { findMethod, type ReflectionMethod, type TextMethod } from '@/data/abai/reflection'
 import { readSession } from '@/hooks/useLessonSession'
 import { useSendAnswer } from '@/hooks/useSendAnswer'
 import { kkAbai } from '@/i18n/kkAbai'
-import { isReflectionAnswer, NAME_MAX_LENGTH, SENTENCE_MAX_LENGTH } from '@/lib/abaiAnswers'
+import { NAME_MAX_LENGTH, REFLECTION_GUARDS, SENTENCE_MAX_LENGTH } from '@/lib/abaiAnswers'
 import { topicFor } from '@/lib/liveBoard'
 
-interface ReflectionForm {
-  light: string | null
-  cup: string | null
-  mood: string | null
-  virtue: string | null
-  sentence: string
+interface AnswerForm {
+  value: string | null
   name: string
 }
 
-const VIRTUE_OPTIONS = VIRTUES.map((v) => ({ id: v, label: v, icon: '✨' }))
+type ValueField = UseFormRegisterReturn<'value'>
 
-// Empty fields are dropped so the payload only carries what the student chose.
-const toAnswer = (f: ReflectionForm) => ({
-  light: f.light ?? undefined,
-  cup: f.cup ?? undefined,
-  mood: f.mood ?? undefined,
-  virtue: f.virtue ?? undefined,
-  sentence: f.sentence.trim() || undefined,
-  name: f.name.trim() || undefined,
-})
+const SentenceField = ({ method, field }: { method: TextMethod; field: ValueField }) => (
+  <fieldset className="option-group">
+    <legend>
+      <span className="option-group__num">{method.number}</span> {method.title}
+    </legend>
+    <label htmlFor="refl-sentence" className="option-group__question">
+      {method.question}
+    </label>
+    <textarea id="refl-sentence" rows={4} maxLength={SENTENCE_MAX_LENGTH} placeholder={method.placeholder} {...field} />
+  </fieldset>
+)
 
-const ReflectionFormView = ({ session }: { session: string }) => {
-  const { isSent, state, send } = useSendAnswer(topicFor(session, 'refleksiya'))
-  const { register, handleSubmit, formState } = useForm<ReflectionForm>({
-    defaultValues: { light: null, cup: null, mood: null, virtue: null, sentence: '', name: '' },
-  })
+const MethodForm = ({ session, method }: { session: string; method: ReflectionMethod }) => {
+  const { isSent, state, send } = useSendAnswer(topicFor(session, `refleksiya-${method.id}`))
+  const { register, handleSubmit, formState } = useForm<AnswerForm>({ defaultValues: { value: null, name: '' } })
 
   if (isSent) return <p className="student__done">{kkAbai.reflection.sent}</p>
 
-  const submit = (form: ReflectionForm) => {
-    const answer = toAnswer(form)
-    if (isReflectionAnswer(answer)) void send(answer)
+  const submit = ({ value, name }: AnswerForm) => {
+    const answer = { value: value?.trim() ?? '', name: name.trim() || undefined }
+    if (REFLECTION_GUARDS[method.id](answer)) void send(answer)
   }
+  const required = method.kind === 'choice' ? kkAbai.reflection.required : kkAbai.reflection.requiredText
+  const field = register('value', { validate: (v) => Boolean(v?.trim()) || required })
   const isSending = state.status === 'sending'
-  const m = REFLECTION_METHODS
 
   return (
     <form className="student__form" onSubmit={handleSubmit(submit)}>
-      <OptionGroup
-        {...m.light}
-        options={TRAFFIC_LIGHTS}
-        variant="light"
-        field={register('light', { required: kkAbai.reflection.required })}
-        error={formState.errors.light?.message}
-      />
-      <OptionGroup {...m.cup} options={CUP_LEVELS} field={register('cup')} />
-      <OptionGroup {...m.mood} options={MOODS} variant="row" field={register('mood')} />
-      <OptionGroup {...m.virtue} options={VIRTUE_OPTIONS} variant="row" field={register('virtue')} />
-      <fieldset className="option-group">
-        <legend>
-          <span className="option-group__num">{m.sentence.number}</span> {m.sentence.title}
-        </legend>
-        <label htmlFor="refl-sentence" className="option-group__question">
-          {m.sentence.question}
-        </label>
-        <textarea id="refl-sentence" rows={3} maxLength={SENTENCE_MAX_LENGTH} placeholder={kkAbai.reflection.sentencePlaceholder} {...register('sentence')} />
-      </fieldset>
+      {method.kind === 'choice' && <OptionGroup method={method} field={field} error={formState.errors.value?.message} />}
+      {method.kind === 'text' && <SentenceField method={method} field={field} />}
+      {method.kind === 'text' && formState.errors.value && <p className="student__error">{formState.errors.value.message}</p>}
       <label className="student__name">
         {kkAbai.reflection.name}
         <input maxLength={NAME_MAX_LENGTH} autoComplete="given-name" {...register('name')} />
@@ -82,10 +62,12 @@ const ReflectionFormView = ({ session }: { session: string }) => {
 export const ReflectionAnswerPage = () => {
   const [params] = useSearchParams()
   const session = readSession(params)
+  const method = findMethod(params.get('m'))
+  const isValidLink = session && method
 
   return (
-    <StudentShell title={kkAbai.reflection.studentTitle} lead={kkAbai.reflection.studentLead}>
-      {session ? <ReflectionFormView session={session} /> : <p className="student__error">{kkAbai.noSession}</p>}
+    <StudentShell title={method?.title ?? kkAbai.reflection.studentTitle} lead={kkAbai.reflection.studentLead}>
+      {isValidLink ? <MethodForm key={method.id} session={session} method={method} /> : <p className="student__error">{kkAbai.noSession}</p>}
     </StudentShell>
   )
 }

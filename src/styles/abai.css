@@ -62,7 +62,7 @@
 .abai-header__icon { font-size: 1.8rem; }
 
 .stage-nav { background: var(--cafe-foam); border-bottom: 1px solid var(--cafe-latte); overflow-x: auto; scrollbar-width: none; }
-.stage-nav ol { display: flex; gap: 2px; justify-content: safe center; list-style: none; margin: 0 auto; padding: 8px 16px; max-width: 1400px; }
+.stage-nav ol { display: flex; gap: 2px; list-style: none; margin: 0 auto; padding: 8px 16px; max-width: 1400px; }
 .stage-nav__link {
   display: flex; align-items: center; gap: 5px; padding: 6px 10px; border-radius: 999px; white-space: nowrap;
   color: var(--cafe-coffee); text-decoration: none; font-weight: 700; font-size: 0.86rem;

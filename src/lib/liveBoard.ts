@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 const NTFY_BASE = 'https://ntfy.sh'
 const TOPIC_PREFIX = 'qazaq-tili-abai'
 
-export type LiveChannel = 'klaster' | 'refleksiya'
+export type LiveChannel = 'klaster' | `refleksiya-${string}`
 export type LiveStatus = 'connecting' | 'live' | 'offline'
 
 export interface LiveMessage<T> {
