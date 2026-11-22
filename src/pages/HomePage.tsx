@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { AbaiBanner } from '@/components/home/AbaiBanner'
 import { AuthorCard } from '@/components/home/AuthorCard'
 import { LetterTiles } from '@/components/home/LetterTiles'
 import { NAV_ITEMS } from '@/components/layout/navItems'
@@ -35,6 +36,8 @@ export const HomePage = () => (
       </div>
       <LetterTiles />
     </section>
+
+    <AbaiBanner />
 
     <ul className="stats">
       {STATS.map((s) => (
