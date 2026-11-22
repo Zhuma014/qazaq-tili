@@ -83,8 +83,7 @@ export const kkAbai = {
   reflection: {
     studentTitle: 'Рефлексия',
     studentLead: 'Бүгінгі сабақ туралы ойыңды бөліс.',
-    required: 'Бір жауапты таңда.',
-    requiredText: 'Сөйлемді аяқтап жаз.',
+    required: 'Кесеңнің бір күйін таңда.',
     name: 'Атың (міндетті емес)',
     send: 'Жіберу',
     sending: 'Жіберіліп жатыр…',
@@ -94,10 +93,6 @@ export const kkAbai = {
     hideResults: 'Нәтижені жасыру',
     resultsTitle: 'Нәтиже',
     noAnswers: 'Әзірге жауап жоқ.',
-    whoNeedsHelp: 'Көмек сұрағандар:',
-    anonymous: 'аты жазылмаған',
-    methodsTitle: 'Кері байланыстың 5 әдісі',
-    pickHint: 'Әдісті таңдаңыз — оның өз QR-коды шығады. Оқушылар телефонда тек сол әдісті көреді.',
   },
   homework: {
     label: 'Үй жұмысы',

@@ -1,6 +1,6 @@
-/** One student's answer to a single reflection method (sent from its own QR code). */
+/** One student's «Даналық кесесі» answer (sent from the reflection QR code). */
 export interface ReflectionAnswer {
-  /** Chosen option id, or the student's sentence for the text method. */
+  /** Chosen option id. */
   value: string
   name?: string
 }

@@ -17,7 +17,7 @@ export const ABAI_STAGES: readonly AbaiStage[] = [
   { slug: 'zheke-zhumys', title: 'Жеке жұмыс', emoji: '📜', lead: '«Әдеби жаңалықтар»: жалған ақпаратты тауып, дұрыс нұсқасын жаз.' },
   { slug: 'abai-beinesi', title: 'Абай бейнесі', emoji: '🖋️', lead: 'QR-кодты оқып, Абай бейнесін бір-екі сөзбен сипатта.' },
   { slug: 'uy-zhumysy', title: 'Үй жұмысы', emoji: '🏠', lead: '«Абай өсиеті – менің өмірімде»' },
-  { slug: 'refleksiya', title: 'Рефлексия', emoji: '🚦', lead: 'QR-код арқылы бүгінгі сабаққа кері байланыс бер.' },
+  { slug: 'refleksiya', title: 'Рефлексия', emoji: '☕', lead: '«Даналық кесесі»: QR-код арқылы бүгінгі сабаққа кері байланыс бер.' },
 ]
 
 export interface AbaiQuote {

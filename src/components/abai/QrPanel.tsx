@@ -7,7 +7,6 @@ import { QrImage } from './QrImage'
 interface QrPanelProps {
   path: string
   session: string
-  params?: Record<string, string>
   answerCount: number
   status: LiveStatus
   onRestart: () => void
@@ -19,9 +18,9 @@ const STATUS_TEXT: Record<LiveStatus, string> = {
   offline: kkAbai.live.offline,
 }
 
-export const QrPanel = ({ path, session, params, answerCount, status, onRestart }: QrPanelProps) => {
+export const QrPanel = ({ path, session, answerCount, status, onRestart }: QrPanelProps) => {
   const [isEnlarged, setIsEnlarged] = useState(false)
-  const link = studentLink(path, session, params)
+  const link = studentLink(path, session)
 
   const restart = () => {
     if (window.confirm(kkAbai.live.newSessionConfirm)) onRestart()
