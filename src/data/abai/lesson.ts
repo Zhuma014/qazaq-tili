@@ -86,3 +86,6 @@ export const WARMUP_VIDEO_ID = '-rIi2dgBqB8'
 
 /** Suno id of the teacher's song «Бес дұшпаның», played under the warm-up video. */
 export const WARMUP_SONG = { title: 'Бес дұшпаның', sunoId: 'c70b84a9-d515-4493-a7cc-5ff4fd3c0cb0' } as const
+
+/** Background music the teacher plays while students work on tasks. */
+export const TASK_MUSIC = { title: 'Абай — «Көзімнің қарасы»', youtubeId: 'P5ug_ZzLX2s' } as const

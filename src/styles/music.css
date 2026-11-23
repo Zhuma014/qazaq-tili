@@ -1,0 +1,41 @@
+/* ================= Тапсырмаға музыка (Абай сабағы) ================= */
+.lesson-music {
+  --music-bg: #3a2417;
+  --music-ink: #fbf1de;
+  --music-soft: #d9bf9b;
+  --music-accent: #c9963f;
+  position: fixed; left: 16px; bottom: 16px; z-index: 69; font-family: var(--font-body);
+}
+.lesson-music__toggle {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px;
+  border: 3px solid var(--music-accent); border-radius: 999px; cursor: pointer;
+  background: var(--music-bg); font-size: 1.5rem; box-shadow: 0 8px 22px rgb(0 0 0 / 0.25);
+}
+.lesson-music__toggle:hover { transform: translateY(-2px); }
+.lesson-music__dot {
+  position: absolute; top: 2px; right: 2px; width: 12px; height: 12px; border-radius: 999px;
+  background: #4ade80; border: 2px solid var(--music-bg);
+}
+.lesson-music__panel {
+  width: min(340px, calc(100vw - 32px)); padding: 12px 14px 14px; border-radius: 20px;
+  background: var(--music-bg); color: var(--music-ink); border: 3px solid var(--music-accent);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.35);
+}
+/* Kept rendered (not display:none) so the YouTube player keeps playing while collapsed. */
+.lesson-music__panel--hidden {
+  position: fixed; left: -10000px; bottom: 0; width: 320px; opacity: 0; pointer-events: none;
+}
+.lesson-music__head { display: flex; align-items: center; gap: 8px; }
+.lesson-music__head b { margin-right: auto; }
+.lesson-music__song { margin: 6px 0 8px; font-weight: 700; color: var(--music-soft); }
+.lesson-music__frame { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #000; }
+.lesson-music__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.lesson-music__hint { margin: 8px 0; font-size: 0.85rem; color: var(--music-soft); }
+.lesson-music__btn {
+  min-height: 36px; padding: 4px 12px; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 700; font-size: 0.9rem;
+  border: 1px solid var(--music-soft); background: transparent; color: var(--music-ink);
+}
+.lesson-music__btn:hover { background: rgb(255 255 255 / 0.1); }
+.lesson-music__btn--stop { width: 100%; border-color: var(--music-accent); }
+
+@media print { .lesson-music { display: none; } }

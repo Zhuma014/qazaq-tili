@@ -15,6 +15,7 @@ import './styles/abai.css'
 import './styles/abai-live.css'
 import './styles/abai-board.css'
 import './styles/timer.css'
+import './styles/music.css'
 import { App } from './App'
 
 const root = document.getElementById('root')

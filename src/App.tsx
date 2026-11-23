@@ -1,5 +1,6 @@
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AbaiLayout } from '@/components/abai/AbaiLayout'
+import { LessonMusic } from '@/components/music/LessonMusic'
 import { LessonTimer } from '@/components/timer/LessonTimer'
 import { Layout } from '@/components/layout/Layout'
 import { AbaiHomePage } from '@/pages/abai/AbaiHomePage'
@@ -62,6 +63,7 @@ export const App = () => (
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
+    <LessonMusic />
     <LessonTimer />
   </HashRouter>
 )
