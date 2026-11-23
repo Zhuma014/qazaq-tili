@@ -117,6 +117,7 @@ export const kkAbai = {
     openYoutube: 'YouTube-та ашу ↗',
     songLabel: 'Ән',
     openSuno: 'Suno-да ашу ↗',
+    stopSong: '⏹ Әнді тоқтату',
   },
   site: {
     scan: 'Телефонмен QR-кодты оқы',
