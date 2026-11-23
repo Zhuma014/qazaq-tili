@@ -67,3 +67,10 @@
   .site-qr { grid-template-columns: 1fr; text-align: center; }
   .site-qr__code { max-width: 360px; margin: 0 auto; }
 }
+
+.warmup { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.warmup__frame {
+  width: 100%; aspect-ratio: 16 / 9; max-height: 75vh; border-radius: 22px; overflow: hidden;
+  background: var(--cafe-espresso); border: 4px solid var(--cafe-gold);
+}
+.warmup__frame iframe { display: block; width: 100%; height: 100%; border: 0; }

@@ -15,6 +15,7 @@ import { PairsPage } from '@/pages/abai/PairsPage'
 import { ReflectionAnswerPage } from '@/pages/abai/ReflectionAnswerPage'
 import { ReflectionPage } from '@/pages/abai/ReflectionPage'
 import { SiteQrPage } from '@/pages/abai/SiteQrPage'
+import { WarmupPage } from '@/pages/abai/WarmupPage'
 import { WorksheetPage } from '@/pages/abai/WorksheetPage'
 import { GamesPage } from '@/pages/GamesPage'
 import { HomePage } from '@/pages/HomePage'
@@ -37,6 +38,7 @@ export const App = () => (
         <Route path="toptyq-zhumys" element={<GroupTasksPage />} />
         <Route path="oqushy-dongelegi" element={<NameWheelPage />} />
         <Route path="zhuptyq-zhumys" element={<PairsPage />} />
+        <Route path="sergitu-sati" element={<WarmupPage />} />
         <Route path="zheke-zhumys" element={<WorksheetPage />} />
         <Route path="abai-beinesi" element={<ClusterPage />} />
         <Route path="uy-zhumysy" element={<HomeworkPage />} />

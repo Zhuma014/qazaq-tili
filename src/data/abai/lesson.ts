@@ -15,6 +15,7 @@ export const ABAI_STAGES: readonly AbaiStage[] = [
   { slug: 'toptyq-zhumys', title: 'Топтық жұмыс', emoji: '👥', lead: 'Әр топ Абайдың даналық соты мен даналық зертханасында жұмыс істейді.' },
   { slug: 'oqushy-dongelegi', title: 'Оқушылар дөңгелегі', emoji: '🎡', lead: 'Дөңгелекті айналдырып, жауап беретін оқушыны таңда.' },
   { slug: 'zhuptyq-zhumys', title: 'Жұптық жұмыс', emoji: '🤝', lead: 'Дөңгелек қай жұпты таңдаса, сол жұп жағдаятты талдайды.' },
+  { slug: 'sergitu-sati', title: 'Сергіту сәті', emoji: '🤸', lead: 'Видеоны көріп, қимылдарды бірге қайталаңдар!' },
   { slug: 'zheke-zhumys', title: 'Жеке жұмыс', emoji: '📜', lead: '«Әдеби жаңалықтар»: жалған ақпаратты тауып, дұрыс нұсқасын жаз.' },
   { slug: 'abai-beinesi', title: 'Абай бейнесі', emoji: '🖋️', lead: 'QR-кодты оқып, Абай бейнесін бір-екі сөзбен сипатта.' },
   { slug: 'uy-zhumysy', title: 'Үй жұмысы', emoji: '🏠', lead: '«Абай өсиеті – менің өмірімде»' },
@@ -79,3 +80,6 @@ export const HOMEWORK = {
   title: '«Абай өсиеті – менің өмірімде»',
   task: 'Абайдың бес асыл ісінің бірін таңдап, сол қасиетті күнделікті өмірде қалай жүзеге асыратыныңды 5–6 сөйлеммен жаз.',
 } as const
+
+/** YouTube id of the «Сергіту сәті» exercise video. */
+export const WARMUP_VIDEO_ID = '-rIi2dgBqB8'
