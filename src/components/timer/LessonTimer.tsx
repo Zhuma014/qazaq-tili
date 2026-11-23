@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { formatClock, useTimer } from '@/hooks/useTimer'
 import { kk } from '@/i18n/kk'
 
-const PRESET_MINUTES = [3, 4, 5, 10] as const
+const PRESET_MINUTES = [1, 3, 4, 5, 10] as const
 const STUDENT_PAGE_SUFFIX = '/zhauap'
 
 type Timer = ReturnType<typeof useTimer>
@@ -60,8 +60,8 @@ const TimerPanel = ({ timer, isBig, onToggleBig, onClose }: TimerPanelProps) => 
     <p className="lesson-timer__choose">{kk.timer.choose}</p>
     <div className="lesson-timer__presets">
       {PRESET_MINUTES.map((m) => (
-        <button key={m} type="button" className="lesson-timer__preset" onClick={() => timer.start(m)}>
-          {kk.timer.minutes(m)}
+        <button key={m} type="button" className="lesson-timer__preset" onClick={() => timer.start(m)} aria-label={kk.timer.minutes(m)}>
+          {m}
         </button>
       ))}
     </div>
@@ -69,7 +69,7 @@ const TimerPanel = ({ timer, isBig, onToggleBig, onClose }: TimerPanelProps) => 
   </section>
 )
 
-/** Floating countdown (3/4/5/10 min) available on every teacher-facing page. */
+/** Floating countdown (1/3/4/5/10 min) available on every teacher-facing page. */
 export const LessonTimer = () => {
   const { pathname } = useLocation()
   const timer = useTimer()

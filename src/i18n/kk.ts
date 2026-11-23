@@ -144,7 +144,7 @@ export const kk = {
   timer: {
     open: 'Таймерді ашу',
     title: 'Таймер',
-    choose: 'Уақытты таңда:',
+    choose: 'Уақытты таңда (минут):',
     minutes: (n: number) => `${n} мин`,
     pause: '⏸ Кідірту',
     resume: '▶ Жалғастыру',

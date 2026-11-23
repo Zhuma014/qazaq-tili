@@ -39,7 +39,8 @@
 .lesson-timer__panel--done .lesson-timer__clock { color: var(--timer-alert); animation: timer-flash 0.8s steps(2) infinite; }
 .lesson-timer__done { margin: 0 0 6px; font-size: 1.3rem; font-weight: 800; color: var(--timer-alert); }
 .lesson-timer__choose { margin: 6px 0; color: var(--timer-soft); font-size: 0.9rem; }
-.lesson-timer__presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.lesson-timer__presets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.lesson-timer__preset { font-size: 1.25rem; }
 .lesson-timer__preset, .lesson-timer__btn {
   min-height: 44px; padding: 6px; border-radius: 14px; cursor: pointer; font: inherit; font-weight: 800;
   border: 2px solid var(--timer-accent); background: transparent; color: var(--timer-ink);
@@ -58,7 +59,7 @@
 .lesson-timer__panel--big .lesson-timer__clock { font-size: clamp(6rem, 26vw, 22rem); margin: 0; }
 .lesson-timer__panel--big .lesson-timer__done { font-size: clamp(1.6rem, 5vw, 3.5rem); }
 .lesson-timer__panel--big .lesson-timer__presets,
-.lesson-timer__panel--big .lesson-timer__controls { width: min(640px, 100%); margin-inline: auto; }
+.lesson-timer__panel--big .lesson-timer__controls { width: min(760px, 100%); margin-inline: auto; }
 .lesson-timer__panel--big .lesson-timer__preset,
 .lesson-timer__panel--big .lesson-timer__btn { min-height: 56px; font-size: 1.2rem; }
 
