@@ -1,0 +1,67 @@
+/* ================= Сабақ таймері (барлық бетте) ================= */
+.lesson-timer {
+  --timer-bg: #1f2a37;
+  --timer-ink: #ffffff;
+  --timer-soft: #aeb8c4;
+  --timer-accent: var(--sun-400);
+  --timer-alert: #ef4444;
+  position: fixed; right: 16px; bottom: 16px; z-index: 70; font-family: var(--font-body);
+}
+
+.lesson-timer__toggle {
+  display: inline-flex; align-items: center; gap: 8px; min-width: 56px; height: 56px; padding: 0 16px;
+  border: 3px solid var(--timer-accent); border-radius: 999px; cursor: pointer;
+  background: var(--timer-bg); color: var(--timer-ink); font-size: 1.5rem; box-shadow: 0 8px 22px rgb(0 0 0 / 0.25);
+}
+.lesson-timer__toggle:hover { transform: translateY(-2px); }
+.lesson-timer__mini { font-size: 1.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.lesson-timer__toggle--paused { border-color: var(--timer-soft); }
+.lesson-timer__toggle--done { border-color: var(--timer-alert); animation: timer-flash 0.8s steps(2) infinite; }
+
+.lesson-timer__panel {
+  width: min(320px, calc(100vw - 32px)); padding: 14px 16px 16px; border-radius: 22px;
+  background: var(--timer-bg); color: var(--timer-ink); border: 3px solid var(--timer-accent);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.35); text-align: center;
+}
+.lesson-timer__panel--done { border-color: var(--timer-alert); }
+.lesson-timer__head { display: flex; align-items: center; gap: 6px; }
+.lesson-timer__head b { margin-right: auto; font-size: 1.05rem; }
+.lesson-timer__icon-btn {
+  min-height: 36px; padding: 4px 10px; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 700; font-size: 0.85rem;
+  border: 1px solid var(--timer-soft); background: transparent; color: var(--timer-ink);
+}
+.lesson-timer__icon-btn:hover { background: rgb(255 255 255 / 0.1); }
+.lesson-timer__clock {
+  margin: 8px 0 4px; font-family: var(--font-display); font-weight: 800; font-size: 3.4rem; line-height: 1;
+  font-variant-numeric: tabular-nums; color: var(--timer-accent);
+}
+.lesson-timer__panel--paused .lesson-timer__clock { color: var(--timer-soft); }
+.lesson-timer__panel--done .lesson-timer__clock { color: var(--timer-alert); animation: timer-flash 0.8s steps(2) infinite; }
+.lesson-timer__done { margin: 0 0 6px; font-size: 1.3rem; font-weight: 800; color: var(--timer-alert); }
+.lesson-timer__choose { margin: 6px 0; color: var(--timer-soft); font-size: 0.9rem; }
+.lesson-timer__presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.lesson-timer__preset, .lesson-timer__btn {
+  min-height: 44px; padding: 6px; border-radius: 14px; cursor: pointer; font: inherit; font-weight: 800;
+  border: 2px solid var(--timer-accent); background: transparent; color: var(--timer-ink);
+}
+.lesson-timer__preset:hover, .lesson-timer__btn:hover { background: var(--timer-accent); color: var(--timer-bg); }
+.lesson-timer__controls { display: flex; gap: 6px; margin-top: 8px; }
+.lesson-timer__controls:empty { display: none; }
+.lesson-timer__btn { flex: 1; border-color: var(--timer-soft); }
+
+/* Full-screen mode for the class board */
+.lesson-timer__panel--big {
+  position: fixed; inset: 0; width: auto; border-radius: 0; border-width: 8px;
+  display: flex; flex-direction: column; justify-content: center; padding: clamp(16px, 4vw, 48px);
+}
+.lesson-timer__panel--big .lesson-timer__head { position: absolute; top: 16px; left: 16px; right: 16px; }
+.lesson-timer__panel--big .lesson-timer__clock { font-size: clamp(6rem, 26vw, 22rem); margin: 0; }
+.lesson-timer__panel--big .lesson-timer__done { font-size: clamp(1.6rem, 5vw, 3.5rem); }
+.lesson-timer__panel--big .lesson-timer__presets,
+.lesson-timer__panel--big .lesson-timer__controls { width: min(640px, 100%); margin-inline: auto; }
+.lesson-timer__panel--big .lesson-timer__preset,
+.lesson-timer__panel--big .lesson-timer__btn { min-height: 56px; font-size: 1.2rem; }
+
+@keyframes timer-flash { 50% { opacity: 0.35; } }
+
+@media print { .lesson-timer { display: none; } }

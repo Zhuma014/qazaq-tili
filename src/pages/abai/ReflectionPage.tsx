@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { QrPanel } from '@/components/abai/QrPanel'
+import { ReflectionQuestions } from '@/components/abai/ReflectionQuestions'
 import { ReflectionResults } from '@/components/abai/ReflectionResults'
 import { REFLECTION_METHOD } from '@/data/abai/reflection'
 import { useLessonSession } from '@/hooks/useLessonSession'
@@ -26,11 +27,15 @@ export const ReflectionPage = () => {
               <span aria-hidden="true">{o.icon}</span> {o.label}
             </li>
           ))}
+          <li className="cup-card__question-slot">
+            <span aria-hidden="true">❓</span> {kkAbai.reflection.question}: <span className="cup-card__blank" aria-hidden="true" />
+          </li>
         </ul>
         <button type="button" className="btn btn--primary btn--lg" onClick={() => setIsShown(!isShown)}>
           {isShown ? kkAbai.reflection.hideResults : kkAbai.reflection.showResults}
         </button>
         {isShown && <ReflectionResults method={REFLECTION_METHOD} answers={messages} />}
+        {isShown && messages.length > 0 && <ReflectionQuestions answers={messages} />}
       </section>
       <QrPanel path={REFLECTION_ANSWER_PATH} session={session} answerCount={messages.length} status={status} onRestart={restart} />
     </div>

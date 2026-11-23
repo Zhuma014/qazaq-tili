@@ -3,6 +3,8 @@ export interface ReflectionAnswer {
   /** Chosen option id. */
   value: string
   name?: string
+  /** What the student did not understand («Сұрағым»). */
+  question?: string
 }
 
 /** One student's word for the «Абай бейнесі» cluster (QR). */

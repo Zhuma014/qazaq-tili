@@ -10,6 +10,7 @@ export interface AbaiStage {
 
 export const ABAI_STAGES: readonly AbaiStage[] = [
   { slug: 'topqa-bolinu', title: 'Топқа бөліну', emoji: '☕', lead: 'Даналық кафесінің есігін ашып, өз тобыңды тап.' },
+  { slug: 'oqu-maqsattary', title: 'Оқу мақсаттары', emoji: '🎯', lead: 'Бүгінгі сабақта қандай мақсатқа жетеміз?' },
   { slug: 'eki-quty', title: 'Екі құты', emoji: '🫙', lead: 'Жақсы және жаман қасиеттерді екі құтыға орналастыр.' },
   { slug: 'toptyq-zhumys', title: 'Топтық жұмыс', emoji: '👥', lead: 'Әр топ Абайдың даналық соты мен даналық зертханасында жұмыс істейді.' },
   { slug: 'oqushy-dongelegi', title: 'Оқушылар дөңгелегі', emoji: '🎡', lead: 'Дөңгелекті айналдырып, жауап беретін оқушыны таңда.' },
@@ -17,7 +18,19 @@ export const ABAI_STAGES: readonly AbaiStage[] = [
   { slug: 'zheke-zhumys', title: 'Жеке жұмыс', emoji: '📜', lead: '«Әдеби жаңалықтар»: жалған ақпаратты тауып, дұрыс нұсқасын жаз.' },
   { slug: 'abai-beinesi', title: 'Абай бейнесі', emoji: '🖋️', lead: 'QR-кодты оқып, Абай бейнесін бір-екі сөзбен сипатта.' },
   { slug: 'uy-zhumysy', title: 'Үй жұмысы', emoji: '🏠', lead: '«Абай өсиеті – менің өмірімде»' },
-  { slug: 'refleksiya', title: 'Рефлексия', emoji: '☕', lead: '«Даналық кесесі»: QR-код арқылы бүгінгі сабаққа кері байланыс бер.' },
+  { slug: 'refleksiya', title: 'Рефлексия', emoji: '☕', lead: '«Даналық кесесі»: QR-код арқылы кесеңнің күйін белгіле, сұрағың болса жаз.' },
+  { slug: 'konil-kui', title: 'Көңіл күй', emoji: '😊', lead: 'Тақтаға шығып, бүгінгі сабақтан кейінгі көңіл күйіңді белгіле.' },
+  { slug: 'sait', title: 'Біздің сайт', emoji: '🌐', lead: 'QR-кодты оқып, «Қазақ тілі әлемі» сайтына кір.' },
+]
+
+export interface LearningObjective {
+  code: string
+  text: string
+}
+
+export const LEARNING_OBJECTIVES: readonly LearningObjective[] = [
+  { code: '6.1.2.1', text: 'әдеби шығармада көтерілген әлеуметтік-қоғамдық мәселені идеясы арқылы түсіндіру;' },
+  { code: '6.2.2.1', text: 'эпикалық, поэзиялық шығармалардағы автор бейнесін анықтау.' },
 ]
 
 export interface AbaiQuote {

@@ -1,5 +1,6 @@
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AbaiLayout } from '@/components/abai/AbaiLayout'
+import { LessonTimer } from '@/components/timer/LessonTimer'
 import { Layout } from '@/components/layout/Layout'
 import { AbaiHomePage } from '@/pages/abai/AbaiHomePage'
 import { ClusterAnswerPage } from '@/pages/abai/ClusterAnswerPage'
@@ -7,10 +8,13 @@ import { ClusterPage } from '@/pages/abai/ClusterPage'
 import { GroupSplitPage, JarsPage } from '@/pages/abai/GameStagePages'
 import { GroupTasksPage } from '@/pages/abai/GroupTasksPage'
 import { HomeworkPage } from '@/pages/abai/HomeworkPage'
+import { MoodPage } from '@/pages/abai/MoodPage'
 import { NameWheelPage } from '@/pages/abai/NameWheelPage'
+import { ObjectivesPage } from '@/pages/abai/ObjectivesPage'
 import { PairsPage } from '@/pages/abai/PairsPage'
 import { ReflectionAnswerPage } from '@/pages/abai/ReflectionAnswerPage'
 import { ReflectionPage } from '@/pages/abai/ReflectionPage'
+import { SiteQrPage } from '@/pages/abai/SiteQrPage'
 import { WorksheetPage } from '@/pages/abai/WorksheetPage'
 import { GamesPage } from '@/pages/GamesPage'
 import { HomePage } from '@/pages/HomePage'
@@ -28,6 +32,7 @@ export const App = () => (
       <Route path="abai" element={<AbaiLayout />}>
         <Route index element={<AbaiHomePage />} />
         <Route path="topqa-bolinu" element={<GroupSplitPage />} />
+        <Route path="oqu-maqsattary" element={<ObjectivesPage />} />
         <Route path="eki-quty" element={<JarsPage />} />
         <Route path="toptyq-zhumys" element={<GroupTasksPage />} />
         <Route path="oqushy-dongelegi" element={<NameWheelPage />} />
@@ -36,6 +41,8 @@ export const App = () => (
         <Route path="abai-beinesi" element={<ClusterPage />} />
         <Route path="uy-zhumysy" element={<HomeworkPage />} />
         <Route path="refleksiya" element={<ReflectionPage />} />
+        <Route path="konil-kui" element={<MoodPage />} />
+        <Route path="sait" element={<SiteQrPage />} />
       </Route>
       <Route path="abai/klaster/zhauap" element={<ClusterAnswerPage />} />
       <Route path="abai/refleksiya/zhauap" element={<ReflectionAnswerPage />} />
@@ -53,5 +60,6 @@ export const App = () => (
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
+    <LessonTimer />
   </HashRouter>
 )

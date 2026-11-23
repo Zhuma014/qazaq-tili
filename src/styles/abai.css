@@ -187,7 +187,6 @@
 .group-card__place { opacity: 0.85; font-style: italic; }
 .group-card__qualities { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; color: var(--cafe-coffee); }
 .group-card__question { padding: 10px 14px; border-left: 4px solid var(--cafe-gold); background: var(--cafe-foam); border-radius: 0 12px 12px 0; }
-.group-card__descriptors { margin: 0; padding-left: 1.2em; }
 
 /* ---------- Fortune wheels ---------- */
 .wheel-page { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, 1fr); gap: 24px; align-items: start; }
