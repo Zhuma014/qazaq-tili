@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { formatClock, useTimer } from '@/hooks/useTimer'
 import { kk } from '@/i18n/kk'
+import { CustomTimeForm } from './CustomTimeForm'
 
 const PRESET_MINUTES = [1, 3, 4, 5, 10] as const
 const STUDENT_PAGE_SUFFIX = '/zhauap'
@@ -65,6 +66,7 @@ const TimerPanel = ({ timer, isBig, onToggleBig, onClose }: TimerPanelProps) => 
         </button>
       ))}
     </div>
+    <CustomTimeForm onStart={timer.start} />
     <TimerControls timer={timer} />
   </section>
 )
