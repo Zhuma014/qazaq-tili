@@ -83,3 +83,6 @@ export const HOMEWORK = {
 
 /** YouTube id of the «Сергіту сәті» exercise video. */
 export const WARMUP_VIDEO_ID = '-rIi2dgBqB8'
+
+/** Suno id of the teacher's song «Бес дұшпаның», played under the warm-up video. */
+export const WARMUP_SONG = { title: 'Бес дұшпаның', sunoId: 'c70b84a9-d515-4493-a7cc-5ff4fd3c0cb0' } as const

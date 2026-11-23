@@ -115,6 +115,8 @@ export const kkAbai = {
   warmup: {
     videoTitle: 'Сергіту сәті — видео',
     openYoutube: 'YouTube-та ашу ↗',
+    songLabel: 'Ән',
+    openSuno: 'Suno-да ашу ↗',
   },
   site: {
     scan: 'Телефонмен QR-кодты оқы',

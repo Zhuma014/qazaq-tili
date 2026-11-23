@@ -1,22 +1,38 @@
-import { WARMUP_VIDEO_ID } from '@/data/abai/lesson'
+import { WARMUP_SONG, WARMUP_VIDEO_ID } from '@/data/abai/lesson'
 import { kkAbai } from '@/i18n/kkAbai'
 
-const embedUrl = `https://www.youtube-nocookie.com/embed/${WARMUP_VIDEO_ID}?rel=0`
-const watchUrl = `https://youtu.be/${WARMUP_VIDEO_ID}`
+const videoEmbedUrl = `https://www.youtube-nocookie.com/embed/${WARMUP_VIDEO_ID}?rel=0`
+const videoWatchUrl = `https://youtu.be/${WARMUP_VIDEO_ID}`
+const songEmbedUrl = `https://suno.com/embed/${WARMUP_SONG.sunoId}`
+const songPageUrl = `https://suno.com/song/${WARMUP_SONG.sunoId}`
 
 export const WarmupPage = () => (
-  <section className="warmup">
-    <div className="warmup__frame">
-      <iframe
-        src={embedUrl}
-        title={kkAbai.warmup.videoTitle}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      />
-    </div>
-    <a className="btn btn--secondary" href={watchUrl} target="_blank" rel="noreferrer">
-      {kkAbai.warmup.openYoutube}
-    </a>
-  </section>
+  <div className="warmup">
+    <section className="warmup__block">
+      <div className="warmup__frame">
+        <iframe
+          src={videoEmbedUrl}
+          title={kkAbai.warmup.videoTitle}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+      <a className="btn btn--secondary" href={videoWatchUrl} target="_blank" rel="noreferrer">
+        {kkAbai.warmup.openYoutube}
+      </a>
+    </section>
+
+    <section className="warmup__block">
+      <h2 className="abai-section-title">
+        🎵 {kkAbai.warmup.songLabel}: «{WARMUP_SONG.title}»
+      </h2>
+      <div className="warmup__song">
+        <iframe src={songEmbedUrl} title={`${kkAbai.warmup.songLabel}: ${WARMUP_SONG.title}`} allow="autoplay; encrypted-media" />
+      </div>
+      <a className="btn btn--secondary" href={songPageUrl} target="_blank" rel="noreferrer">
+        {kkAbai.warmup.openSuno}
+      </a>
+    </section>
+  </div>
 )
