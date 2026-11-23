@@ -3,13 +3,14 @@ import { FortuneWheel } from '@/components/abai/FortuneWheel'
 import { NamesEditor } from '@/components/abai/NamesEditor'
 import { WheelControls } from '@/components/abai/WheelControls'
 import { WinnerOverlay } from '@/components/abai/WinnerOverlay'
+import { CLASS_6A_STUDENTS } from '@/data/abai/students'
 import { useStoredState } from '@/hooks/useStoredState'
 import { useWheelPicker } from '@/hooks/useWheelPicker'
 import { kkAbai } from '@/i18n/kkAbai'
 
-const STUDENT_COUNT = 25
-const NAMES_KEY = 'abai-student-names'
-const defaultNames = () => Array.from({ length: STUDENT_COUNT }, (_, i) => kkAbai.wheel.defaultName(i + 1))
+// A new key, so devices that already stored the old «N-оқушы» placeholders pick up the class list.
+const NAMES_KEY = 'abai-student-names-6a'
+const defaultNames = () => [...CLASS_6A_STUDENTS]
 
 export const NameWheelPage = () => {
   const [names, setNames] = useStoredState<string[]>(NAMES_KEY, defaultNames)

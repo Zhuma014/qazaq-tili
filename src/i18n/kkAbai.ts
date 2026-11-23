@@ -32,7 +32,6 @@ export const kkAbai = {
     namesHint: 'Әр жолға бір оқушының атын жазыңыз (25 оқушы). Тізім осы құрылғыда сақталады.',
     save: 'Сақтау',
     cancel: 'Болдырмау',
-    defaultName: (n: number) => `${n}-оқушы`,
     pair: (n: number) => `${n}-жұп`,
     allPairs: 'Барлық жұптар',
     continue: 'Жалғастыру ✓',

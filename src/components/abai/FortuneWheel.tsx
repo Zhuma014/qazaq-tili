@@ -17,7 +17,7 @@ const RADIUS = 190
 const FULL_TURNS = 6
 const JITTER_SHARE = 0.6
 const LABEL_RADIUS_SHARE = 0.6
-const MAX_LABEL_CHARS = 16
+const MAX_LABEL_CHARS = 18
 const DENSE_WHEEL = 16
 const SEGMENT_COLORS = [
   { fill: '#5a3825', text: '#fbf1de' },
