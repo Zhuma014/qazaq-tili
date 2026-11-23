@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { ABAI_QUOTES, ABAI_STAGES, LESSON_SUBTITLE, LESSON_TITLE } from '@/data/abai/lesson'
 import { kkAbai } from '@/i18n/kkAbai'
@@ -6,20 +6,29 @@ import { QuoteCard } from './QuoteCard'
 
 const stagePath = (slug: string) => `/abai/${slug}`
 
-const StageNav = () => (
-  <nav className="stage-nav" aria-label={kkAbai.lessonMap}>
-    <ol>
-      {ABAI_STAGES.map((s, i) => (
-        <li key={s.slug}>
-          <NavLink to={stagePath(s.slug)} className="stage-nav__link">
-            <span className="stage-nav__num">{i + 1}</span>
-            <span aria-hidden="true">{s.emoji}</span> {s.title}
-          </NavLink>
-        </li>
-      ))}
-    </ol>
-  </nav>
-)
+const StageNav = ({ pathname }: { pathname: string }) => {
+  const navRef = useRef<HTMLElement>(null)
+
+  // The stage list is wider than the screen: keep the current stage visible in it.
+  useEffect(() => {
+    navRef.current?.querySelector('.active')?.scrollIntoView({ inline: 'center', block: 'nearest' })
+  }, [pathname])
+
+  return (
+    <nav ref={navRef} className="stage-nav" aria-label={kkAbai.lessonMap}>
+      <ol>
+        {ABAI_STAGES.map((s, i) => (
+          <li key={s.slug}>
+            <NavLink to={stagePath(s.slug)} className="stage-nav__link">
+              <span className="stage-nav__num">{i + 1}</span>
+              <span aria-hidden="true">{s.emoji}</span> {s.title}
+            </NavLink>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
 
 const StagePager = ({ index }: { index: number }) => {
   const prev = ABAI_STAGES[index - 1]
@@ -64,7 +73,7 @@ export const AbaiLayout = () => {
           </span>
         </Link>
       </header>
-      <StageNav />
+      <StageNav pathname={pathname} />
       <main className="abai-main">
         {stage && (
           <header className="stage-head">
